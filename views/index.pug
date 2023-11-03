@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Express
+  p Welcome to title
+  
+  button(type='button', class='btn btn-outline-success', onclick = "goFaster()") Press Me
+  br
+  br
+  div(id="faster") <i>Increase the speed.</i>
+  br
+  br
+  a(href="earbuds") Earbuds Search
+  script.
+    let mph = 20;
+    let change = 1;
+    function goFaster(){
+      mph += change;
+      change += 1;
+      let result = document.getElementById("faster");
+
+      result.innerHTML = "MPH " + mph + " with change" + change;
+    }
