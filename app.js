@@ -4,11 +4,33 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+require('dotenv').config();
+const connectionString = process.env.MONGO_CON
+//const connectionString = 'mongodb+srv://webapps:1234@cluster0.2chkxnf.mongodb.net/?retryWrites=true&w=majority';
+
+mongoose = require('mongoose');
+var Earbud = require('./models/earbudSchema');
+mongoose.connect(connectionString, {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+});
+// Get the default connection
+var db = mongoose.connection;
+
+// Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+// Connection open event
+db.once('open', function () {
+  console.log('Connection to DB succeeded');
+});
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var earbudsRouter = require('./routes/earbuds');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
+var resourceRouter = require('./routes/resource');
 
 var app = express();
 
@@ -27,6 +49,8 @@ app.use('/users', usersRouter);
 app.use('/earbuds',earbudsRouter);
 app.use('/board',boardRouter);
 app.use('/choose',chooseRouter);
+app.use('/resource', resourceRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -42,5 +66,45 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// We can seed the collection if needed on server start
+async function recreateDB() {
+  // Delete everything
+  await Earbud.deleteMany();
+  let instance1 = new Earbud({ 
+    earbuds_brand: "Samsung",
+    earbuds_quantity: '1 items',
+    earbuds_cost: 150
+  });
+  instance1.save().then(doc=>{
+    console.log("First object saved")
+  }).catch(err=>{
+    console.error(err)
+  })
+
+  let instance2 = new Earbud({
+    earbuds_brand: "Apple",
+    earbuds_quantity: '3 items',
+    earbuds_cost: 225
+  });
+  instance2.save().then(doc=>{
+    console.log("Second object saved")
+  }).catch(err=>{
+    console.error(err)
+  })
+
+  let instance3 = new Earbud({ 
+    earbuds_brand: "Beats", 
+    earbuds_quantity: '5 items', 
+    earbuds_cost: 180 
+  });
+  instance3.save().then(doc=>{
+    console.log("Third object saved")
+  }).catch(err=>{
+    console.error(err)
+  })
+}
+let reseed = true;
+if (reseed) { recreateDB(); }
 
 module.exports = app;
