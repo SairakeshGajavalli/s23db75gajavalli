@@ -3,29 +3,13 @@ extends layout
 block content
   h1= title
   -
-    let results = [
-      {
-        "earbuds_brand": "Samsung",
-        "earbuds_quantity": "2 items",
-        "earbuds_cost": 150
-      },
-      {
-        "earbuds_brand": "Apple",
-        "earbuds_quantity": "2 items",
-        "earbuds_cost": 225
-      },
-      {
-        "earbuds_brand": "Beats",
-        "earbuds_quantity": "3 items",
-        "earbuds_cost": 180
-      },                   
-    ]
+    let items  = results
   div(class= "container-fluid")
     div(class = "row")
-      each item,index in results
-        div(class= "col-sm-2", onclick=`buy(${index})`) Brand: #{item.earbuds_brand}
-        div(class= "col-sm-2", onclick=`buy(${index})`) Quantity: #{item.earbuds_quantity}
-        div(class= "col-sm-2", onclick=`buy(${index})`) Cost: #{item.earbuds_cost}
+      each item,index in items
+        div(class= "col-sm-2", onclick=`buy(${index})`) Brand: #{item.earbud_brand}
+        div(class= "col-sm-2", onclick=`buy(${index})`) Quantity: #{item.earbud_quantity}
+        div(class= "col-sm-2", onclick=`buy(${index})`) Cost: #{item.earbud_cost}
         br
         br
         
