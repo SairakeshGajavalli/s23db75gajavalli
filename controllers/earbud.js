@@ -23,7 +23,7 @@ exports.earbud_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
-    // {"earbuds_brand": "Beats", "earbuds_quantity": '5 items', "earbuds_cost": 180} 
+    // {"earbuds_brand": "Beats", "earbuds_quantity": "5 items", "earbuds_cost": 180} 
     document.earbuds_brand = req.body.earbuds_brand;
     document.earbuds_quantity = req.body.earbuds_quantity;
     document.earbuds_cost = req.body.earbuds_cost;
