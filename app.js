@@ -10,10 +10,7 @@ const connectionString = process.env.MONGO_CON
 
 mongoose = require('mongoose');
 var Earbud = require('./models/earbudSchema');
-mongoose.connect(connectionString, {
-  useNewUrlParser: true, 
-  useUnifiedTopology: true,
-});
+mongoose.connect(connectionString);
 // Get the default connection
 var db = mongoose.connection;
 
