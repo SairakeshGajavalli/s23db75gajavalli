@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 require('dotenv').config();
 const connectionString = process.env.MONGO_CON
-//const connectionString = 'mongodb+srv://webapps:1234@cluster0.2chkxnf.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose = require('mongoose');
 var Earbud = require('./models/earbudSchema');
