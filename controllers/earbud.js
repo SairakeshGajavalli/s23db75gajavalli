@@ -12,8 +12,15 @@ exports.earbud_list = async function(req, res) {
 };
 
 // for a specific Earbuds.
-exports.earbud_detail = function(req, res) {
- res.send('NOT IMPLEMENTED: Earbud detail: ' + req.params.id);
+exports.earbud_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await Earbud.findById( req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 
 // Handle Earbud create on POST.
