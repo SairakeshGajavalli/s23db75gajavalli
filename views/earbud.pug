@@ -1,0 +1,21 @@
+extends layout
+block content
+    h1= title
+
+    - let earbudid = toShow._id
+    - let earbud_flavour = toShow.earbud_flavour
+    - let earbud_quantity = toShow.earbud_quantity
+    - let earbud_cost = toShow.earbud_cost
+    div
+        div.row
+            div(class='earbudAttr mr-3') earbud ID is:
+            div #{earbudid}
+        div.row
+            div(class='earbudAttr mr-3') earbud Flavour is:
+            div #{earbud_flavour}
+        div.row
+            div(class='earbudAttr mr-3') earbud Quantity is:
+            div #{earbud_quantity}
+        div.row
+            div(class='earbudAttr mr-3') earbud Cost is:
+            div #{earbud_cost}

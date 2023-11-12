@@ -44,13 +44,34 @@ exports.earbud_create_post = async function(req, res) {
 };
 
 // Handle Earbud delete form on DELETE.
-exports.earbud_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: Earbud delete DELETE ' + req.params.id);
+exports.earbud_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Earbud.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 
 // Handle Earbud update form on PUT.
-exports.earbud_update_put = function(req, res) {
- res.send('NOT IMPLEMENTED: Earbud update PUT' + req.params.id);
+exports.earbud_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Earbud.findById( req.params.id)
+        // Do updates of properties
+        if(req.body.earbud_type) toUpdate.earbud_type = req.body.earbud_type;
+        if(req.body.cost) toUpdate.cost = req.body.cost;
+        if(req.body.size) toUpdate.size = req.body.size;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+        } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
 
 // VIEWS
@@ -64,3 +85,16 @@ exports.earbud_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+// Handle a show one view with id specified by query
+exports.earbud_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+        result = await Earbud.findById( req.query.id)
+        res.render('earbuddetail',{ title: 'Earbud Detail', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+ };
