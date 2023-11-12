@@ -13,13 +13,15 @@ exports.earbud_list = async function(req, res) {
 
 // for a specific Earbuds.
 exports.earbud_detail = async function(req, res) {
-    console.log("detail" + req.params.id)
-    try {
-        result = await Earbud.findById( req.params.id)
-        res.send(result)
-    } catch (error) {
+    console.log("single view for id " + req.query.id)
+    try{
+        result = await Earbud.findById( req.query.id)
+        res.render('earbuddetail',
+    { title: 'Earbud Detail', toShow: result });
+    }
+    catch(err){
         res.status(500)
-        res.send(`{"error": document for id ${req.params.id} not found`);
+        res.send(`{'error': '${err}'}`);
     }
 };
 
