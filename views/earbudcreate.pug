@@ -1,7 +1,7 @@
 extends layout
 block content
     h1= title
-    form(id='EarbudForm', action="/resource/earbud", method="POST")
+    form(id='EarbudForm', action="/resource/earbuds", method="POST")
         div.form-group
             label.earbudAttr(for='earbuds_brand') Earbud Brand
             input#earbuds_brand(type='text', name='earbuds_brand')
