@@ -26,7 +26,5 @@ router.get('/earbuds/:id', earbud_controller.earbud_detail);
 // GET request for list of all Earbud items.
 router.get('/earbuds', earbud_controller.earbud_list);
 
-/* GET detail costume page */
-router.get('/detail', earbud_controller.earbud_view_one_Page);
 
 module.exports = router;
