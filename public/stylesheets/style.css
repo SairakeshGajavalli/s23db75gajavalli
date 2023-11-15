@@ -8,9 +8,11 @@ a {
 }
 
 .earbudAttr {
-  background-color: aquamarine;
-  width: 120px;
-  border-style:inset;
+  background-color: chocolate;
+  width: 100%;
+  border-style:groove;
+  border-radius: 10px;
   margin: 10px;
+  box-shadow: 0 0 6px 4px rgb(0 0 0 / 12%), 0px 0px 9px 3px rgb(0 0 0 / 24%);
  }
 
