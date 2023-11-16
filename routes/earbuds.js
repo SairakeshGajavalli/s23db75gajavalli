@@ -8,6 +8,8 @@ router.get('/',  earbud_controller.earbud_view_all_Page);
 router.get('/detail', earbud_controller.earbud_view_one_Page);
 /* GET create costume page */
 router.get('/create', earbud_controller.earbud_create_Page);
+/* GET create update page */
+router.get('/update', earbud_controller.earbud_update_Page);
 
 
 module.exports = router;

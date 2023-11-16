@@ -2,10 +2,14 @@ extends layout
 block content
     h1= title
 
+    - let earbudsid = toShow._id
     - let earbuds_brand = toShow.earbuds_brand
     - let earbuds_quantity = toShow.earbuds_quantity
     - let earbuds_cost = toShow.earbuds_cost
     div
+        div.row
+            div(class='earbudAttr mr-3') Earbud Id is: #{earbudsid}
+            br
         div.row
             div(class='earbudAttr mr-3') Earbud Brand is: #{earbuds_brand}
             br
