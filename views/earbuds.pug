@@ -5,15 +5,15 @@ block content
   -
     let items  = results
   div(class= "container-fluid")
-    div(class = "row")
+    div(class = "row m-1")
       each item,index in items
-        div(class= "col-sm-2", onclick=`buy(${index})`) Brand: #{item.earbuds_brand}
-        div(class= "col-sm-2", onclick=`buy(${index})`) Quantity: #{item.earbuds_quantity}
-        div(class= "col-sm-2", onclick=`buy(${index})`) Cost: #{item.earbuds_cost}
+        - let destination = `dispatch(\"/resource/update?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1") Item #{item.earbuds_brand}(#{item.earbuds_quantity}) is #{item.earbuds_cost}
         br
         br
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
         
   script.
-    function buy(itemNum){
-      alert(`You purchased item ${itemNum+1}`)
+    function dispatch(path){
+      window.location.href=path
     }
