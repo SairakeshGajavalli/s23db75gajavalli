@@ -64,9 +64,9 @@ exports.earbud_update_put = async function(req, res) {
     try {
         let toUpdate = await Earbud.findById( req.params.id)
         // Do updates of properties
-        if(req.body.earbud_type) toUpdate.earbud_type = req.body.earbud_type;
-        if(req.body.cost) toUpdate.cost = req.body.cost;
-        if(req.body.size) toUpdate.size = req.body.size;
+        if(req.body.earbuds_brand) toUpdate.earbuds_brand = req.body.earbuds_brand;
+        if(req.body.earbuds_quantity) toUpdate.earbuds_quantity = req.body.earbuds_quantity;
+        if(req.body.earbuds_cost) toUpdate.earbuds_cost = req.body.earbuds_cost;
         let result = await toUpdate.save();
         console.log("Sucess " + result)
         res.send(result)
