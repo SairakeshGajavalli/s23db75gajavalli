@@ -2,16 +2,20 @@ extends layout
 
 block content
   h1= title
+  - let des = `dispatch(\"/earbuds/create\")`
+  button.btn( class="ml-1" id="btn-5" onclick= des) Create
   -
     let items  = results
   div(class= "container-fluid")
-    div(class = "row m-1")
+    div(class = "col m-1")
       each item,index in items
-        - let destination = `dispatch(\"/resource/update?id=${item._id}\")`
+        - let destination = `dispatch(\"/earbuds/update?id=${item._id}\")`
+        - let destination1 = `dispatch(\"/earbuds/detail?id=${item._id}\")`
+        - let destination2 = `dispatch(\"/earbuds/delete?id=${item._id}\")`
         div(class="row-sm-2", class="m-1") Item #{item.earbuds_brand}(#{item.earbuds_quantity}) is #{item.earbuds_cost}
-        br
-        br
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="ml-1" id="btn-2", onclick= destination) Update
+        button.btn( class="ml-1" id="btn-4", onclick= destination1) Details
+        button.btn( class="ml-1" id="btn-3", onclick= destination2) Delete
         
   script.
     function dispatch(path){

@@ -9,10 +9,80 @@ a {
 
 .earbudAttr {
   background-color: chocolate;
-  width: 100%;
+  width: fit-content !important;
   border-style:groove;
   border-radius: 10px;
   margin: 10px;
   box-shadow: 0 0 6px 4px rgb(0 0 0 / 12%), 0px 0px 9px 3px rgb(0 0 0 / 24%);
  }
 
+
+
+ #btn-2{
+  color: #000;
+  background-color: #5bc2e7;
+  background-image: linear-gradient(to bottom,#5bc2e7 50%,#000 50%);
+  background-size: 100% 200%;
+  transition: all .2s;
+  font-weight: bold;
+  font-family: cursive;
+  border: 0;
+}
+#btn-2:hover{
+  background-color: #000;
+  background-position: 0 -100%;
+  font-weight: bold;
+  color: #5bc2e7
+}
+#btn-3{
+  color: #d9d9d6;
+  background-color: #222731;
+  background-image: linear-gradient(to bottom,#222731 50%,#d9d9d6 50%);
+  background-size: 100% 200%;
+  transition: all .2s;
+  font-weight: bold;
+  font-family: cursive;
+  border: 0;
+}
+#btn-3:hover{
+  background-color: #d9d9d6 ;
+  background-position: 0 -100%;
+  font-weight: bold;
+  color: #222731;
+}
+
+#btn-4{
+  background-color: #7ccc6c;
+  background-image: linear-gradient(to bottom, #7ccc6c 50%, #000000 50%);
+  color: #000;
+  background-size: 100% 200%;
+  transition: all .2s;
+  font-weight: bold;
+  font-family: cursive;
+  border: 0;
+}
+#btn-4:hover{
+  background-color: #000;
+  background-position: 0 -100%;
+  font-weight: bold;
+  color: #7ccc6c
+}
+.ml-1{
+  margin-right: 1.5%;
+}
+#btn-5{
+  background-color: #ffc107;
+  background-image: linear-gradient(to bottom, #ffc107 50%, #000000 50%);
+  color: #000;
+  background-size: 100% 200%;
+  transition: all .2s;
+  font-weight: bold;
+  font-family: cursive;
+  border: 0;
+}
+#btn-5:hover{
+  background-color: #000;
+  background-position: 0 -100%;
+  font-weight: bold;
+  color: #ffc107
+}
