@@ -5,14 +5,16 @@ const earbudsSchema = mongoose.Schema({
         required:[true,"Earbuds brand Name is required"]
     },
     earbuds_quantity: {
-        type:String,
-        required:true
+        type: Number,
+        required:true,
+        min:1,
+        max:4
     },
     earbuds_cost: {
         type: Number,
         required:true,
-        min: 4,
-        max: 100
+        min:4,
+        max:100
     }
     })
 module.exports = mongoose.model("Earbuds",earbudsSchema) 
